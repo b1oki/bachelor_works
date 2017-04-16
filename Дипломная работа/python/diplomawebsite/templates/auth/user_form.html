@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+{% include "usermenu.html" %}
+<h3>Регистрация</h3>
+<p>Зарегистрированы!</p>
+{% else %}
+<form action="{% url 'accounts:signup' %}" method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+{% endif %}
+{% endblock %}

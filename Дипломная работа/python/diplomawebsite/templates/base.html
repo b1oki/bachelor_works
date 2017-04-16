@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Сайт группы ПИ-301</title>
+	{% load static %}
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/base.css" media="all" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="{% get_static_prefix %}scripts/library.js"></script>
+</head>
+<body>
+<header>
+	<img src="{% get_static_prefix %}images/header.png" width="400" />
+</header>
+<nav>
+	{% block navigation %}
+	<a href="{% url 'timetable:index' %}">Расписание</a>
+	<a href="{% url 'forum:index' %}">Форум</a>
+	<a href="{% url 'files:index' %}">Файлы</a>
+	<a href="{% url 'info:index' %}">Инфо</a>
+	{% endblock %}
+</nav>
+<section>
+{% block content %}{% endblock %}
+</section>
+</body>
+</html>

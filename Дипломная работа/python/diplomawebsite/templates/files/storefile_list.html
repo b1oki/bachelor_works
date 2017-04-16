@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+{% include "usermenu.html" %}
+<h3>Файлы</h3>
+{% if storefile_list %}
+<table>
+	<thead>
+		<tr>
+			<th>Файл</th>
+			<th>Автор</th>
+			<th>Закачен</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for str in storefile_list %}
+		<tr>
+			<td><a href="{{ str.get_absolute_url }}">{{ str.name }}</a></td>
+			<td><a href="{{ str.user_sender.get_absolute_url }}">{{ str.user_sender }}</a></td>
+			<td>{{ str.sended|date:"SHORT_DATETIME_FORMAT"  }}</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% else %}
+    <p>Нет информации.</p>
+{% endif %}
+	<p><a href="{% url 'files:upload' %}">Загрузить файл</a></p>
+{% else %}
+<p>Файлы недоступны анонимным пользователям.</p>
+{% include "pls_auth.html" %}
+{% endif %}
+{% endblock content %}

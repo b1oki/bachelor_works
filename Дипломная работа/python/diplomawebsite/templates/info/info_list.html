@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+{% include "usermenu.html" %}
+{% if info_list %}
+    {% for str in info_list %}
+		<h3>{{ str.title }}</h3>
+		<p>{{ str.text }}</p>
+    {% endfor %}
+{% else %}
+    <p>Нет информации.</p>
+{% endif %}
+{% else %}
+<p>Сайт учебной группы.</p>
+{% include "pls_auth.html" %}
+{% endif %}
+{% endblock content %}

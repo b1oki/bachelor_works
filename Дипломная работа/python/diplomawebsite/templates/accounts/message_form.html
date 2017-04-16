@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+{% include "usermenu.html" %}
+<h3>Личные сообщения</h3>
+<form action="{% url 'accounts:message_send' %}" method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+{% else %}
+{% include "pls_auth.html" %}
+{% endif %}
+{% endblock %}

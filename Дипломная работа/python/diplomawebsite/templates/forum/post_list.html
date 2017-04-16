@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+{% include "usermenu.html" %}
+<h3>Форум</h3>
+{% if post_list %}
+    {% for str in post_list %}
+	<div class="forum-message"> 
+		<p class="forum-message-text">{{ str.message }}</a></p>
+		<p class="forum-message-info">
+			<a href="{{ str.user_sender.get_absolute_url }}">{{ str.user_sender }}</a>
+			отправил <a href="{{ str.get_absolute_url }}">сообщение</a> в {{ str.sended|date:"SHORT_DATETIME_FORMAT" }}
+		</p>
+	</div>
+    {% endfor %}
+{% else %}
+    <p>Нет информации.</p>
+{% endif %}
+<p><a href="{% url 'forum:add_post' %}">Добавить сообщение</a></p>
+{% else %}
+<p>Форум недоступен анонимным пользователям.</p>
+{% include "pls_auth.html" %}
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Расписание на {{ today }}</h3>
+{% if table_list %}
+    <table class="timetable">
+		<thead>
+		<tr>
+			<th>Время</th>
+			<th>Предмет</th>
+			<th>Преподаватель</th>
+			<th>Кабинет</th>
+			<th>Неделя</th>
+		</tr>
+		</thead>
+		<tbody>
+    {% for str in table_list %}
+		<tr class='{% if forloop.counter|divisibleby:"2" %}iter{% endif %}'>
+			<td>{{ str.begin|time:"G:i" }} - {{ str.ends|time:"G:i" }}</td>
+			<td>{{ str.title }}</td>
+			<td>{{ str.teacher }}</td>
+			<td>{{ str.room }}</td>
+			<td>
+			{% if str.parity == 0 %}
+			Любая
+			{% elif str.parity == 1 %}
+			Нечетная
+			{% elif str.parity == 2 %}
+			Четная
+			{% else %}
+			Неизвестно
+			{% endif %}
+			</td>
+		</tr>
+    {% endfor %}
+		</tbody>
+	</table>
+{% else %}
+    <p>В этот день нет занятий.</p>
+{% endif %}
+{% include "timetable/formAnotherDay.html" %}
+{% endblock content %}

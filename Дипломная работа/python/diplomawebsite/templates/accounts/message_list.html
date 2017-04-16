@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+{% include "usermenu.html" %}
+<h3>Личные сообщения</h3>
+{% if message_list %}
+<table>
+<thead>
+	<tr>
+		<th>Сообщение</th>
+		<th>Отправитель</th>
+		<th>Получатель</th>
+		<th>Время отправки</th>
+	</tr>
+</thead>
+<tbody>
+	{% for msg in message_list %}
+	<tr>
+		<td><a href="{{ msg.get_absolute_url }}">{{ msg.message|truncatechars:20 }}</a></td>
+		<td><a href="{{ msg.user_sender.get_absolute_url }}">{{ msg.user_sender }}</a></td>
+		<td><a href="{{ msg.user_reciver.get_absolute_url }}">{{ msg.user_reciver }}</a></td>		
+		<td>{{ msg.sended|date:"SHORT_DATETIME_FORMAT" }}</td>
+	</tr>
+	{% endfor %}
+</tbody>
+</table>
+{% else %}
+    <p>Нет информации.</p>
+{% endif %}
+<p><a href="{% url 'accounts:message_send' %}">Отправить сообщение</a></p>
+{% else %}
+{% include "pls_auth.html" %}
+{% endif %}
+{% endblock %}

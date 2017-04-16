@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+{% include "usermenu.html" %}
+<h3>Профиль</h3>
+<table>
+<thead>
+	<tr>
+		<th>Логин</th>
+		<th>Имя</th>
+		<th>Фамилия</th>
+		<th>E-mail</th>
+		<th>Регистрация</th>
+	</tr>
+</thead>
+<tbody>
+{% if user_list %}
+    {% for str in user_list %}
+	<tr>
+		<td>{{ str.username }}</td>
+		<td>{{ str.first_name }}</td>
+		<td>{{ str.last_name }}</td>
+		<td>{{ str.email }}</td>
+		<td>{{ str.date_joined }}</td>
+	</tr>
+    {% endfor %}
+{% else %}
+    <p>Нет информации.</p>
+{% endif %}
+</tbody>
+</table>
+{% else %}
+{% include "pls_auth.html" %}
+{% endif %}
+{% endblock %}

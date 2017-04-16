@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+{% include "usermenu.html" %}
+<h3>Файл</h3>
+{% if object %}
+	{% load static %}
+	<p><i>Имя:</i> {{ object.name }}</p>
+	<p><a href="{% get_media_prefix %}{{ object.file }}">Скачать</a></p>
+	<p><i>Автор:</i> <a href="{{ object.user_sender.get_absolute_url }}">{{ object.user_sender }}</a></p>
+	<p><i>Закачен:</i> {{ object.sended|date:"SHORT_DATETIME_FORMAT" }}</p>
+{% else %}
+    <p>Нет информации.</p>
+{% endif %}
+	<p><a href="{% url 'files:upload' %}">Загрузить файл</a></p>
+{% else %}
+<p>Файлы недоступны анонимным пользователям.</p>
+{% include "pls_auth.html" %}
+{% endif %}
+{% endblock content %}

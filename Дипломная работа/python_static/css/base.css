@@ -1,0 +1,100 @@
+body {
+	margin:auto;
+	text-align:center;
+	background:url("../images/background.jpg");
+}
+header {
+	padding:5px 20px;
+	color:#77b;
+}
+nav a {
+	padding:5px 20px;
+	text-decoration:none;
+	background:#f7f7ff;
+}
+nav a:hover {
+	color:#f7f7ff;
+	background:#77b;;
+}
+section {
+	margin:auto;
+	padding:5px 10px;
+	background:#fafaff;
+	width:800px;
+}
+.newlesson {color:#000;}
+.nearlesson {color:#00b;}
+.thislesson {color:#080;}
+.oldlesson {color:#888;}
+table {border-collapse:collapse;}
+table, tbody, thead, th, tr, td {
+	margin:auto;
+	border:1px solid #000;
+	padding:5px;
+}
+table.forum {margin:10px auto; width:780px}
+table.timetable {width:600px;}
+table.user_info {width:500px;}
+th {
+	background:#dbdbfd;
+	text-align:center;
+}
+table.user_info th {width:130px;}
+tr {
+	background:#fefefe;
+	text-align:left;
+}
+tr.iter {background:#f9f9ff;}
+p.usermenu a {padding:0px 5px 0px 0px;}
+td.msg {width:380px;}
+.spoiler {
+	position:relative;
+	margin:15px 30px;
+	text-align:center;
+}
+.spoiler a.spoiler-head {
+	background:#fafaff;
+	display:block;
+	color:#00c;
+	text-decoration:none;
+}
+.spoiler a.spoiler-head span {
+	padding:0;
+	border-bottom:dashed 1px #71C83B;
+	color:#71C83B;
+}
+.spoiler .spoiler-body {
+	display:none;
+	position:relative;
+	padding:6px 0 0 0;
+	margin:0;
+	clear:both;
+}
+form.chose_time {
+	margin:10px auto;
+	width:350px;
+}
+div.auth {
+	margin:auto;
+	width:300px;
+}
+div.auth form {text-align:left;}
+div.auth form span {text-align:center;}
+
+div.forum-message {
+	text-align:center;
+	width: 750px;
+	padding: auto;
+	margin: auto;
+	background:#fff}
+div.forum-message p.forum-message-text {
+	text-align:left;
+	padding: auto;
+	padding-left:10px;
+	padding-top:10px;
+}
+div.forum-message p.forum-message-info {
+	text-align:right;
+	font-style:italic;
+	font-size:smaller;
+}
