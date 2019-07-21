@@ -1,0 +1,27 @@
+body {
+	background: #FEFDFC;
+	font-family: Tahoma sans-serif;
+}
+div#content table, div#content td {
+	border: 1px solid #000;
+	background: #FFFDD9;
+}
+div#content table {
+	min-width: 50%;
+}
+div#content td {
+	padding: 2px 5px;
+	border: 1px solid #ddd;
+	background: #FFFDE9;
+}
+div.MenuOffset {
+	margin: 3px 0;
+}
+div.MenuOffset a {
+	background: #FEFDFC;
+	padding: 0 2px;
+}
+span.MenuOffsetCurrent {
+	background: #FEFDFC;
+	padding: 0 2px;
+}
